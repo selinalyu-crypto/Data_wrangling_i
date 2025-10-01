@@ -78,7 +78,7 @@ litters_df # print out the dataset in the console
     ## # ℹ 2 more variables: pups_dead_birth <dbl>, pups_survive <dbl>
 
 ``` r
-skimr::skim(litters_df)
+skimr::skim(litters_df) #data summary
 ```
 
 |                                                  |            |
@@ -114,7 +114,7 @@ Data summary
 | pups_survive    |         0 |             1 |  6.41 | 2.05 |   1 |   5 |   7 |   8 |    9 | ▁▃▂▇▇ |
 
 ``` r
-tail(litters_df)
+tail(litters_df) #gives last segment of the data
 ```
 
     ## # A tibble: 6 × 8
@@ -129,3 +129,12 @@ tail(litters_df)
     ## # ℹ 2 more variables: pups_dead_birth <dbl>, pups_survive <dbl>
 
 use view(litter_df) in the console to take a look at the full dataset
+
+## Options to read_csv
+
+litters_df = read_csv(“./data/FAS_litters.csv”, skip = 10) skip 10 rows,
+but if print to console, values become variable names litters_df =
+read_csv(“./data/FAS_litters.csv”, skip = 10, col_names = FALSE) no
+column names anymore, made X1, X2… as column names litters_df =
+read_csv(“./data/FAS_litters.csv”, na = c(“.”, “NA”, ““)) treat those as
+missing check out `?read_csv()`for more information

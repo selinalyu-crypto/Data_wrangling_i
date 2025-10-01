@@ -22,9 +22,24 @@ names(litters_df)
 ## Take a look at the data
 ```{r}
 litters_df # print out the dataset in the console
-skimr::skim(litters_df)
-tail(litters_df)
+skimr::skim(litters_df) #data summary
+tail(litters_df) #gives last segment of the data
 ```
 use view(litter_df) in the console to take a look at the full dataset
 
- 
+## Options to read_csv
+
+litters_df = read_csv("./data/FAS_litters.csv", skip = 10)
+    skip 10 rows, but if print to console, values become variable names
+litters_df = read_csv("./data/FAS_litters.csv", skip = 10, col_names = FALSE)
+    no column names anymore, made X1, X2... as column names
+litters_df = read_csv("./data/FAS_litters.csv", na = c(".", "NA", ""))
+    treat those as missing
+check out `?read_csv()`for more information
+
+
+
+
+
+
+
