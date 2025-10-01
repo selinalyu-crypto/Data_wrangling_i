@@ -13,3 +13,52 @@ library(tidyverse)
 litters_df = read_csv("./data/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
 ```
+
+## `select`
+
+Choose some columns and not others
+
+```{r}
+select(litters_df, group, litter_number)
+```
+
+```{r}
+select(litters_df, group, gd0_weight:gd_of_birth)
+```
+
+```{r}
+select(litters_df, -litter_number)
+```
+
+Renaming columns
+
+```{r}
+select(litters_df, GROUP = group, LITTER_number = litter_number)
+# keep and rename only these columns
+```
+
+```{r}
+rename(litters_df, GROUP = group, LITTER_number = litter_number)
+# just want to rename, keep every column
+```
+
+Select helpers
+```{r}
+select(litters_df, starts_with("gd"))
+# keep everything that start with gd
+```
+
+```{r}
+select(litters_df, litter_number, everything())
+# move litter number to the first, keep everything else
+```
+
+```{r}
+relocate(litters_df, litter_number)
+# move to the first
+```
+
+
+
+
+
