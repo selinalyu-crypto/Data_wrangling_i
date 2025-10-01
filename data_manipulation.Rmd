@@ -114,6 +114,37 @@ arrange(litters_df, pups_born_alive)
 #pups born alive in order
 ```
 
+##  `%>%`
+```{r}
+litters_df_raw = read_csv("./data/FAS_litters.csv", na = c("NA", ".", ""))
+litters_df_clean_names = janitor::clean_names(litters_df_raw)
+litters_df_selected_cols = select(litters_df_clean_names, -pups_survive)
+
+litters_df_with_vars = 
+  mutate(
+    litters_df_selected_cols, 
+    wt_gain = gd18_weight - gd0_weight,
+    group = str_to_lower(group))
+
+litters_df_with_vars_without_missing = 
+  drop_na(litters_df_with_vars, wt_gain)
+
+litters_df_with_vars_without_missing
+```
+
+USE THE PIPE OPERATOR INSTEAD
+
+```{r}
+litters_df = 
+  read_csv("./data/FAS_litters.csv", na = c("NA", ".", "")) %>%
+  janitor::clean_names() %>% 
+  select(-pups_survive) %>% 
+  mutate(
+    wt_gain = gd18_weight - gd0_weight,
+    group = str_to_lower(group)) %>% 
+  drop_na(wt_gain)
+```
+
 
 
 
