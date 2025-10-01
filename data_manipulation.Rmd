@@ -107,6 +107,15 @@ mutate(litters_df,
 #group variable lower case
 ```
 
+## `arrange`
+
+```{r}
+arrange(litters_df, pups_born_alive)
+#pups born alive in order
+```
+
+
+
 
 
 
