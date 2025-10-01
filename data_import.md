@@ -16,6 +16,11 @@ library(tidyverse)
     ## ✖ dplyr::lag()    masks stats::lag()
     ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 
+``` r
+library(readxl)
+library(haven)
+```
+
 ## Read in some data
 
 Read in the litters dataset.
@@ -138,3 +143,19 @@ read_csv(“./data/FAS_litters.csv”, skip = 10, col_names = FALSE) no
 column names anymore, made X1, X2… as column names litters_df =
 read_csv(“./data/FAS_litters.csv”, na = c(“.”, “NA”, ““)) treat those as
 missing check out `?read_csv()`for more information
+
+## Other file formats
+
+Read in an Excel file
+
+``` r
+mlb_df = read_excel("./data/mlb11.xlsx", range = "A1:F7")
+```
+
+do Veiw(mlb_df) in the console to view the whole data set
+
+Read in SAS file
+
+``` r
+pulse_df = read_sas("./data/public_pulse_data.sas7bdat")
+```
